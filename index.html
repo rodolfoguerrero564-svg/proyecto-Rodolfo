@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contrataciones Rodolfo Guerrero Herrera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; background: #0f172a; color: white; text-align: center; padding: 20px; }
+       .card { background: white; color: black; padding: 20px; border-radius: 15px; max-width: 600px; margin: auto; }
+        input, textarea { width: 90%; padding: 12px; margin: 8px; border-radius: 8px; border: 1px solid #ccc; }
+        button { background: #22c55e; color: black; font-weight: bold; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+       .guardia { background: #dcfce7; padding: 12px; margin: 10px; border-radius: 10px; text-align: left; color: black; }
+    </style>
+</head>
+<body>
+    <h1>Seguridad Privada</h1>
+    <h2>Rodolfo Guerrero Herrera - Contrataciones</h2>
+
+    <div class="card">
+        <h3>¿Eres guardia? Regístrate</h3>
+        <form action="/registro" method="post">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="text" name="telefono" placeholder="WhatsApp" required>
+            <input type="text" name="zona" placeholder="Zona: Río Bravo, Reynosa" required>
+            <textarea name="experiencia" placeholder="Experiencia"></textarea>
+            <button type="submit">Registrarme</button>
+        </form>
+
+        <hr>
+        <h3>Guardias Disponibles</h3>
+        {% for g in guardias %}
+        <div class="guardia">
+            <b>{{ g[1] }}</b> - {{ g[4] }}<br>
+            Tel: {{ g[2] }} | {{ g[3] }}
+        </div>
+        {% else %}
+        <p>Aún no hay guardias registrados</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
